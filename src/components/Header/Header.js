@@ -1,21 +1,23 @@
-import './Header.css';
-import { Link, useLocation } from 'react-router-dom';
-import logo from '../../images/logo.svg';
-import Navigation from '../Navigation/Navigation';
-import NavAuth from '../'
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import "./Header.css";
+import NavReister from "../NavRegister/NavRegister";
+import logo from "../../images/logo.svg";
+import Navigation from "../Navigation/Navigation";
 
+const Header = () => {
+  const { pathname } = useLocation();
 
-const Header = ({ loggedIn, isLoading }) => {
-    const { pathname } = useLocation();
-  
-    return (
-      <header className={`header ${pathname !== '/' ? '' : 'header_type_auth'}`}>
-        <Link to="/" className="header__link">
-          <img className="header__logo" src={logo} alt="Логотип Mymovie"></img>
+  return (
+    <header className={`header ${pathname !== "/" ? "" : "header_movies"}`}>
+      <div className="header__logo">
+        <Link to="/" className="header__logo">
+          <img src={logo} alt="Логотип"></img>
         </Link>
-        {isLoading ? '' : loggedIn ? <Navigation /> : <NavAuth />}
-      </header>
-    );
-  };
-  
-  export default Header;
+      </div>
+      {pathname !== "/" ? <Navigation /> : <NavReister />}
+    </header>
+  );
+};
+
+export default Header;

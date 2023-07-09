@@ -1,0 +1,118 @@
+.nav-popup {
+  display: block;
+  visibility: hidden;
+  transition: ease-in 0.4s;
+  opacity: 0;
+}
+
+.nav-popup_opened {
+  visibility: visible;
+  opacity: 1;
+}
+
+.nav-popup__block {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 520px;
+  height: 100vh;
+  padding: 0;
+  z-index: 9;
+  align-items: center;
+}
+
+.nav-popup__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 143px 0 0px;
+  width: 100%;
+}
+
+.nav-popup__link {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  transition: opacity 0.2s linear;
+}
+
+.nav-popup__link:hover {
+  opacity: 0.6;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.nav-popup__account-link {
+  text-decoration: none;
+}
+
+.nav-popup__account-btn {
+  width: 100px;
+  height: 32px;
+  border-radius: 40px;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0px 3px 14px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.2s linear;
+  display: flex;
+  align-items: center;
+  padding-left: 11px;
+  gap: 7px;
+  margin-bottom: 90px;
+}
+.nav-popup__account-btn:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.nav-popup__btn-close {
+  background-image: url(../../images/btn_close.svg);
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  border: none;
+  position: fixed;
+  top: 26px;
+  right: 26px;
+  z-index: 10;
+}
+
+@media screen and (max-width: 404px) {
+  .nav-popup__block {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .nav-popup__btn-close {
+    top: 17px;
+    right: 17px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .nav-popup__list {
+    top: 17px;
+    right: 17px;
+    padding: 129px 0px 0px;
+    gap: 22px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .nav-popup__account-btn {
+    margin-bottom: 46px;
+  }
+}

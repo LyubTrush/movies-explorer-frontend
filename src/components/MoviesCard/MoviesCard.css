@@ -1,0 +1,139 @@
+.movies-card {
+  width: 360px;
+  height: 319px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  background-color: #fdfdfd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.movies-card__block {
+  width: 324px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+}
+.movies-card__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 230px;
+  margin: 0;
+  padding: 0;
+}
+
+.movies-card__time {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #a0a0a0;
+  margin: 0;
+}
+
+.movies-card__image {
+  width: 360px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.movies-card__save {
+  width: 100px;
+  height: 29px;
+  background-color: #f9f9f9;
+  border: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  margin-top: 18px;
+}
+
+.movies-card__save_active {
+  background-color: #ff3055;
+}
+
+@media screen and (max-width: 890px) {
+  .movies-card {
+    width: 342px;
+    height: 309px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .movies-card__image {
+    width: 342px;
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .movies-card__block {
+    width: 306px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .movies-card__title {
+    width: 224px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .movies-card {
+    width: 300px;
+    height: 271px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .movies-card__image {
+    width: 300px;
+    height: 168px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .movies-card__block {
+    width: 272px;
+    padding: 14px 0;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .movies-card__save {
+    width: 100px;
+    height: 29px;
+    font-size: 12px;
+    line-height: 11px;
+    margin-top: 14px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .movies-card__title {
+    width: 200px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 404px) {
+  .movies-card__time {
+    font-size: 10px;
+    line-height: 18px;
+  }
+}
