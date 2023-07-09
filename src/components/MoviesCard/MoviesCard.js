@@ -17,10 +17,10 @@ const MoviesCard = ({ card }) => {
         <p className="movies-card__time">{card.duration}</p>
       </div>
       <a
-        className="movie-card__trailer"
+        className="movies-card__trailer"
         href="https://www.youtube.com/watch?v=GNrdg3PzpJQ"
         rel="noreferrer"
-        target="_blank"
+        target="blank"
       >
         <img className="movies-card__image" src={card.src} alt="постер" />
       </a>
@@ -28,7 +28,7 @@ const MoviesCard = ({ card }) => {
         className={`movies-card__save ${isLiked && "movies-card__save_active"}`}
         onClick={handleClick}
       >
-        {isLiked ? <img src={icon} alt="Saved" /> : <p>Сохранить</p>}
+        {isLiked ? <img src={icon} alt="Saved" /> : <span>Сохранить</span>}
       </button>
     </li>
   );

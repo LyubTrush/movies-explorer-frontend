@@ -1,9 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./NavRegister.css";
 
 const NavReister = () => {
+  const navigate = useNavigate();
+
+  const handleSignInClick = () => {
+    navigate('/signin', { replace: true });
+  };
   return (
     <nav className="nav-register">
       <ul className="nav-register__list">
@@ -14,9 +19,9 @@ const NavReister = () => {
         </li>
 
         <li>
-          <Link to="/signin" className="nav-register__link">
-            <button className="nav-register__button">Войти</button>
-          </Link>
+          <div className="nav-register__link">
+            <button className="nav-register__button" onClick={handleSignInClick}>Войти</button>
+          </div>
         </li>
       </ul>
     </nav>

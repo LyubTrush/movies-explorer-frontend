@@ -9,6 +9,7 @@ const Portfolio = () => {
           <a
             class="portfolio__link"
             href="https://github.com/LyubTrush/how-to-learn"
+            target="blank"
           >
             Статичный сайт
           </a>
@@ -17,6 +18,7 @@ const Portfolio = () => {
           <a
             class="portfolio__link"
             href="https://github.com/LyubTrush/russian-travel"
+            target="blank"
           >
             Адаптивный сайт
           </a>
@@ -25,6 +27,7 @@ const Portfolio = () => {
           <a
             class="portfolio__link"
             href="https://github.com/LyubTrush/react-mesto-auth"
+            target="blank"
           >
             Одностраничное приложение
           </a>

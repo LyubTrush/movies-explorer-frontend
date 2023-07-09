@@ -4,7 +4,7 @@
   width: 100%;
   background-image: url(../../images/promo.svg);
   background-position-x: center;
-  background-position-y: top 82px;
+  background-position-y: 40%;
   background-repeat: no-repeat;
 }
 
@@ -25,7 +25,7 @@
 @media screen and (max-width: 780px) {
   .promo {
     height: 784px;
-    background-position-y: top 224px;
+    background-position-y: center;
   }
 }
 
@@ -40,8 +40,8 @@
 @media screen and (max-width: 500px) {
   .promo {
     height: 570px;
-    background-position-y: top 142px;
     background-size: 248px;
+    background-position-y: 45%;
   }
 }
 

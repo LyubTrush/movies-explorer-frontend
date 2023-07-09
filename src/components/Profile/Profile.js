@@ -27,7 +27,7 @@ const Profile = () => {
   };
 
   return (
-    <body>
+    <>
       <div className="profile">
         <h2 className="profile__title">Привет, Виталий!</h2>
         <form className="profile__form" onSubmit={handleSubmit}>
@@ -75,7 +75,7 @@ const Profile = () => {
           </Link>{" "}
         </div>
       </div>
-    </body>
+    </>
   );
 };
 

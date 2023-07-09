@@ -27,11 +27,16 @@
   background-color: #f9f9f9;
 }
 
+.search__input:focus {
+  outline: none;
+  border-bottom: 1px solid #a0a0a0;
+}
+
 .search__input::placeholder {
   color: #a0a0a0;
 }
 
-.search_button {
+.search__button {
   margin-right: 4px;
   width: 64px;
   height: 34px;
@@ -129,7 +134,7 @@
 }
 
 @media screen and (max-width: 404px) {
-  .search_button {
+  .search__button {
     min-width: 58px;
     height: 34px;
     font-weight: 500;

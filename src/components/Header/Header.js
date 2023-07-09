@@ -10,11 +10,9 @@ const Header = () => {
 
   return (
     <header className={`header ${pathname !== "/" ? "" : "header_movies"}`}>
-      <div className="header__logo">
         <Link to="/" className="header__logo">
           <img src={logo} alt="Логотип"></img>
         </Link>
-      </div>
       {pathname !== "/" ? <Navigation /> : <NavReister />}
     </header>
   );

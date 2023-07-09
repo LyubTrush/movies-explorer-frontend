@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./NavPopup.css";
 
 const NavPopup = (props) => {
+  const navigate = useNavigate();
+
   const handleLinkClick = () => {
     props.onClose(); // Закрываем попап при клике на ссылку
+    navigate('/profile', { replace: true });
   };
   return (
     <nav className={`nav-popup${props.isOpen ? " nav-popup_opened" : ""}`}>
@@ -15,12 +18,12 @@ const NavPopup = (props) => {
       ></button>
       <div className="nav-popup__block">
         <ul className="nav-popup__list">
-          <li className="nav-popup__link">
+          <li>
             <Link className="nav-popup__link" to="/" onClick={handleLinkClick}>
               Главная
             </Link>
           </li>
-          <li className="nav-popup__link">
+          <li>
             <Link
               className="nav-popup__link"
               to="/movies"
@@ -29,7 +32,7 @@ const NavPopup = (props) => {
               Фильмы
             </Link>
           </li>
-          <li className="nav-popup__link">
+          <li>
             <Link
               className="nav-popup__link"
               to="/saved-movies"
@@ -39,16 +42,12 @@ const NavPopup = (props) => {
             </Link>
           </li>
         </ul>
-        <Link
-          className="nav-popup__account-link"
-          to="/profile"
-          onClick={handleLinkClick}
-        >
-          <button className="nav-popup__account-btn">
-            <p className="navigation__account-text">Аккаунт</p>
-            <div className="navigation__account-icon" />
+        <div className="nav-popup__account-link">
+          <button className="nav-popup__account-btn"  onClick={handleLinkClick}>
+            <span className="nav-popup__account-text">Аккаунт</span>
+            <span className="nav-popup__account-icon" />
           </button>
-        </Link>
+        </div>
       </div>
     </nav>
   );

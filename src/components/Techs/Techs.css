@@ -110,7 +110,7 @@
 
 @media screen and (max-width: 780px) {
   .techs__list {
-    padding: 83px 60px;
+    padding: 83px 0px;
     margin: 0;
     grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
     max-width: 100%;

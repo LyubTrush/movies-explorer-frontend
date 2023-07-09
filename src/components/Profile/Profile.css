@@ -1,5 +1,5 @@
 .profile {
-  max-width: 410px;
+  width: 410px;
   max-height: 100vh;
   margin: 70px auto;
   box-sizing: border-box;
@@ -164,7 +164,7 @@
 @media screen and (max-width: 500px) {
   .profile {
     margin: 56px auto;
-    max-width: 260px;
+    width: 260px;
     align-items: center;
   }
 }

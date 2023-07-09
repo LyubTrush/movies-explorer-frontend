@@ -23,6 +23,7 @@ const AboutMe = () => {
           <a
             className="about-me__info-link"
             href="https://github.com/LyubTrush"
+            target="blank"
           >
             Github
           </a>

@@ -75,7 +75,7 @@
   text-decoration: none;
 }
 
-.navigation__burger {
+.burger {
   display: none;
   background-image: url(../../images/menu.svg);
   width: 44px;
@@ -96,13 +96,13 @@
 }
 
 @media screen and (max-width: 780px) {
-  .navigation__burger {
+  .burger {
     display: block;
   }
 }
 
 @media screen and (max-width: 404px) {
-  .navigation__burger {
+  .burger {
     width: 40px;
     height: 43px;
     background-size: 100%;

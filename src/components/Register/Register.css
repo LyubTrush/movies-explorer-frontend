@@ -1,10 +1,11 @@
 .register {
-  max-width: 396px;
+  width: 396px;
   max-height: 100vh;
   margin: 70px auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
 
 .register__logo {
@@ -24,7 +25,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-top: 40px;
+  padding-top: 34px;
 }
 
 .register__title {
@@ -47,7 +48,7 @@
   border-radius: 3px;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 17px;
   border: none;
   cursor: pointer;
@@ -62,7 +63,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 22px;
 }
 .register__input {
   width: 100%;
@@ -139,14 +140,14 @@
 @media screen and (max-width: 500px) {
   .register {
     margin: 56px auto;
-    max-width: 260px;
+    width: 260px;
     align-items: center;
   }
 }
 
 @media screen and (max-width: 500px) {
   .register__title {
-    padding-top: 9px;
+    padding-top: 5px;
   }
 }
 

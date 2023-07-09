@@ -24,6 +24,23 @@
   z-index: 9;
   align-items: center;
 }
+.nav-popup__account-icon {
+  background-color: #f9f9f9;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  background-image: url(../../images/icon__profile.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nav-popup__account-text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 12px;
+  text-decoration: none;
+}
 
 .nav-popup__list {
   list-style-type: none;
