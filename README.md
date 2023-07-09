@@ -1,3 +1,7 @@
+#макет фигмы 
+https://disk.yandex.ru/d/v0nKhtVd9qFa3g
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
