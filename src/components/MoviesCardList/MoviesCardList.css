@@ -23,6 +23,9 @@
   margin: 62px auto -17px;
   transition: opacity 0.2s linear;
 }
+.movies__more-btn_save {
+  display: none;
+}
 
 .movies__more-btn:hover {
   opacity: 0.6;

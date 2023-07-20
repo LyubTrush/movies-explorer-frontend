@@ -1,0 +1,1 @@
+export const AUTH = "http://api.mymov.nomoredomains.rocks"

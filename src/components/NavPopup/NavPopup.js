@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import "./NavPopup.css";
 
 const NavPopup = (props) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLinkClick = () => {
     props.onClose(); // Закрываем попап при клике на ссылку
@@ -19,13 +20,21 @@ const NavPopup = (props) => {
       <div className="nav-popup__block">
         <ul className="nav-popup__list">
           <li>
-            <Link className="nav-popup__link" to="/" onClick={handleLinkClick}>
+          <Link
+              className={`nav-popup__link ${
+                location.pathname === "/" ? "nav-popup__link-page" : ""
+              }`}
+              to="/"
+              onClick={handleLinkClick}
+            >
               Главная
             </Link>
           </li>
           <li>
-            <Link
-              className="nav-popup__link"
+          <Link
+              className={`nav-popup__link ${
+                location.pathname === "/movies" ? "nav-popup__link-page" : ""
+              }`}
               to="/movies"
               onClick={handleLinkClick}
             >
@@ -33,8 +42,10 @@ const NavPopup = (props) => {
             </Link>
           </li>
           <li>
-            <Link
-              className="nav-popup__link"
+          <Link
+              className={`nav-popup__link ${
+                location.pathname === "/saved-movies" ? "nav-popup__link-page" : ""
+              }`}
               to="/saved-movies"
               onClick={handleLinkClick}
             >

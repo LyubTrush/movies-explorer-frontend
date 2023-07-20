@@ -66,6 +66,13 @@
   padding: 0;
 }
 
+.search__error {
+  color: #ff3055;
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 12px;
+}
+
 .search__toggle {
   display: flex;
   justify-content: center;
@@ -87,7 +94,7 @@
   position: absolute;
   inset: 0;
   cursor: pointer;
-  background-color: #2be080;
+  background-color: #c6c9c7;
   border-radius: 20px;
   transition: 0.6s;
 }

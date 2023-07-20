@@ -24,8 +24,8 @@
   transition: opacity 0.2s linear;
 }
 
-.navigation__link-film {
-  font-weight: 500;
+.navigation__link-page {
+  font-weight: 600;
 }
 
 .navigation__link:hover {

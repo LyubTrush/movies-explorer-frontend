@@ -63,10 +63,13 @@
   transition: opacity 0.2s linear;
 }
 
+.nav-popup__link-page {
+  text-decoration: underline;
+}
+
 .nav-popup__link:hover {
   opacity: 0.6;
   cursor: pointer;
-  text-decoration: underline;
 }
 
 .nav-popup__account-link {

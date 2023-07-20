@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "./NavRegister.css";
 
-const NavReister = () => {
+
+const NavReister = (props) => {
   const navigate = useNavigate();
 
   const handleSignInClick = () => {

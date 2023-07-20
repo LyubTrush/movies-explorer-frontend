@@ -58,7 +58,10 @@
   opacity: 0.6;
   cursor: pointer;
 }
-
+.register__button_disabled {
+  background: #F9F9F9;
+  color: #A0A0A0;
+}
 .register__inputs-block {
   width: 100%;
   display: flex;

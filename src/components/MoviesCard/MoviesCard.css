@@ -60,10 +60,19 @@
   justify-content: center;
   border-radius: 30px;
   margin-top: 18px;
+  transition: opacity 0.2s linear;
+}
+.movies-card__save:hover {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 .movies-card__save_active {
   background-color: #ff3055;
+}
+
+.movies-card__delete_active {
+  background-color: #f9f9f9;
 }
 
 @media screen and (max-width: 890px) {

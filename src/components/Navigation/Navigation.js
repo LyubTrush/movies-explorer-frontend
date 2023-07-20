@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 
 import "./Navigation.css";
@@ -7,6 +7,7 @@ import NavPopup from "../NavPopup/NavPopup";
 const Navigation = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleBurgerClick = () => {
     setIsPopupOpen(!isPopupOpen);
@@ -21,15 +22,22 @@ const Navigation = () => {
       <nav className="navigation">
         <ul className="navigation__list">
           <li>
-            <Link
-              className="navigation__link navigation__link-film"
+          <Link
+              className={`navigation__link navigation__link-film ${
+                location.pathname === "/movies" ? "navigation__link-page" : ""
+              }`}
               to="/movies"
             >
               Фильмы
             </Link>
           </li>
           <li>
-            <Link className="navigation__link" to="/saved-movies">
+          <Link
+              className={`navigation__link ${
+                location.pathname === "/saved-movies" ? "navigation__link-page" : ""
+              }`}
+              to="/saved-movies"
+            >
               Сохранённые фильмы
             </Link>
           </li>
@@ -48,6 +56,7 @@ const Navigation = () => {
         className="burger"
         onClick={handleBurgerClick}
       ></button>
+
     </>
   );
 };

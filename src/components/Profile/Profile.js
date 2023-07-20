@@ -1,12 +1,24 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 import "./Profile.css";
 
-const Profile = () => {
+const Profile = (props) => {
   const [editMode, setEditMode] = useState(false);
-  const [name, setName] = useState("Виталий");
-  const [email, setEmail] = useState("pochta@yandex.ru");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const { currentUser } = React.useContext(CurrentUserContext);
+  console.log(currentUser);
+
+  // После загрузки текущего пользователя из API
+  // его данные будут использованы в управляемых компонентах.
+  React.useEffect(() => {
+    setName(currentUser.name);
+    setEmail(currentUser.email);
+  }, [currentUser]);
+
 
   const handleEdit = () => {
     setEditMode(true);
@@ -15,6 +27,7 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // здесь будет логика сохранения данных пользователя
+    props.onUpdateUser({ name, email});
     setEditMode(false);
   };
 
@@ -29,7 +42,7 @@ const Profile = () => {
   return (
     <>
       <div className="profile">
-        <h2 className="profile__title">Привет, Виталий!</h2>
+        <h2 className="profile__title">Привет, {currentUser.name}!</h2>
         <form className="profile__form" onSubmit={handleSubmit}>
           <div className="profile__inputs-block">
             <div className="profile__input-block">
@@ -70,7 +83,7 @@ const Profile = () => {
               Редактировать
             </p>
           )}
-          <Link to="/signin" className="profile__link">
+          <Link to="/signin" className="profile__link" onClick={props.logOut}>
             Выйти из аккаунта
           </Link>{" "}
         </div>
