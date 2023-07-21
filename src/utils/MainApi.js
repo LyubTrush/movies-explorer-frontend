@@ -74,5 +74,5 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  baseUrl: "http://api.mymov.nomoredomains.rocks",
+  baseUrl: "https://api.mymov.nomoredomains.rocks",
 });

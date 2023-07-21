@@ -1,5 +1,5 @@
 //import { AUTH } from "./config";
-const BASE_AUTH_URL = "http://api.mymov.nomoredomains.rocks";
+const BASE_AUTH_URL = "https://api.mymov.nomoredomains.rocks";
 
 //const BASE_AUTH_URL = AUTH;
 
