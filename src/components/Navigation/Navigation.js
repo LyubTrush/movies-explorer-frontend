@@ -23,8 +23,10 @@ const Navigation = () => {
         <ul className="navigation__list">
           <li>
           <Link
-              className={`navigation__link navigation__link-film ${
+              className={`navigation__link ${
                 location.pathname === "/movies" ? "navigation__link-page" : ""
+              } ${
+                location.pathname === "/" ? "navigation__link-main" : ""
               }`}
               to="/movies"
             >
@@ -35,6 +37,8 @@ const Navigation = () => {
           <Link
               className={`navigation__link ${
                 location.pathname === "/saved-movies" ? "navigation__link-page" : ""
+              }${
+                location.pathname === "/" ? "navigation__link-main" : ""
               }`}
               to="/saved-movies"
             >

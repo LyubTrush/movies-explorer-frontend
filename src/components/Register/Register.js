@@ -13,7 +13,7 @@ const Register = (props) => {
   const [nameErrors, setNameErrors] = useState("");
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleSubmit = useCallback(
     (e) => {
@@ -34,7 +34,9 @@ const Register = (props) => {
       setIsButtonDisabled(true);
     } else {
       setNameErrors("");
-      setIsButtonDisabled(false);
+      setIsButtonDisabled(
+        nameValue.trim() === "" || email.trim() === "" || password.trim() === ""
+      );
     }
   };
 
@@ -49,7 +51,9 @@ const Register = (props) => {
       setIsButtonDisabled(true);
     } else {
       setEmailErrors("");
-      setIsButtonDisabled(false);
+      setIsButtonDisabled(
+        emailValue.trim() === "" || password.trim() === "" || name.trim() === ""
+      );
     }
   };
 
@@ -63,7 +67,9 @@ const Register = (props) => {
       setIsButtonDisabled(true);
     } else {
       setPasswordErrors("");
-      setIsButtonDisabled(false);
+      setIsButtonDisabled(
+        email.trim() === "" || passwordValue.trim() === "" || name.trim() === ""
+      );
     }
   };
 

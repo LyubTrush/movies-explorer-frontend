@@ -28,6 +28,10 @@
   font-weight: 600;
 }
 
+.navigation__link-main {
+  color: white;
+}
+
 .navigation__link:hover {
   opacity: 0.6;
   cursor: pointer;

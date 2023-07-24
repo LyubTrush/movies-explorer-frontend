@@ -19,7 +19,7 @@ import yes from "../../images/yes.png";
 import no from "../../images/no.png";
 import { mainApi } from "../../utils/MainApi";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
-import Preloader from "../Preloader/Preloader";
+
 // Компонент для защиты роутов
 
 function App() {
@@ -41,10 +41,13 @@ function App() {
   }
 
   const clearLocalStorage = () => {
+    localStorage.removeItem("allMovies");
     localStorage.removeItem("likedMovies");
     localStorage.removeItem("searchResult");
     localStorage.removeItem("filmName");
     localStorage.removeItem("isShortFilms");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
   };
 
   // проверка токена при инициализации
@@ -79,43 +82,21 @@ function App() {
           setIsLoading(false);
           console.log(err);
         });
-        console.log(savedMovies)
-        mainApi
+      mainApi
         .getMovies() // Запрос на сервер для получения сохраненных фильмов
         .then((data) => {
           // localStorage.setItem("likedMovies", JSON.stringify(data));
           setSavedMovies(data);
-          console.log(data);
         })
         .catch((err) => {
           console.log(err);
+          navigate("/");
           setError(
             "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
           );
         });
     }
-  }, [loggedIn]);
-
-  // обработчик регистрации
-  const handleSignup = React.useCallback(
-    (data) => {
-      auth
-        .register(data)
-        .then(() => {
-          setPopupImage(yes);
-          setRegisterMessage("Вы успешно зарегистрировались!");
-          navigate("/movies");
-          console.log(data);
-          console.log(currentUser);
-        })
-        .catch(() => {
-          setPopupImage(no);
-          setRegisterMessage("Что-то пошло не так! Попробуйте ещё раз.");
-        })
-        .finally(handleInfoTooltip);
-    },
-    [navigate]
-  );
+  }, [loggedIn, navigate]);
 
   // обработчик авторизации
   const handleSignin = React.useCallback(
@@ -139,6 +120,26 @@ function App() {
     },
     [navigate]
   );
+
+  // обработчик регистрации
+  const handleSignup = React.useCallback(
+    (data) => {
+      auth
+        .register(data)
+        .then(() => {
+          setPopupImage(yes);
+          setRegisterMessage("Вы успешно зарегистрировались!");
+          handleSignin(data.email, data.password);
+        })
+        .catch(() => {
+          setPopupImage(no);
+          setRegisterMessage("Что-то пошло не так! Попробуйте ещё раз.");
+        })
+        .finally(handleInfoTooltip);
+    },
+    [navigate]
+  );
+
   //обработчик редактирования профиля
   function handleUpdateUser(userData) {
     const jwt = localStorage.getItem("jwt");
@@ -156,7 +157,6 @@ function App() {
   //обработчик кнопки выхода
   function handleLogOut() {
     localStorage.removeItem("jwt");
-    navigate("/signin");
     setEmail("");
     setLoggedIn(false);
     clearLocalStorage();
@@ -179,7 +179,7 @@ function App() {
         ) : (
           ""
         )}
-        {isLoading && <Preloader />}
+       
         <Routes>
           <Route path="/" element={<Main />} />
           <Route

@@ -12,7 +12,6 @@ const MoviesCard = ({ card, isSavedPage }) => {
 
   // Проверяем наличие фильма в сохраненных фильмах для установления начального состояния
   React.useEffect(() => {
-    console.log(savedMovies);
     const likedMovie = savedMovies.some(
       (movie) => movie.movieId === (card.id || card.movieId)
     );
@@ -20,11 +19,9 @@ const MoviesCard = ({ card, isSavedPage }) => {
   }, [savedMovies, setSavedMovies, card.id, card.movieId]);
   //удаление
   function handleCardDelete(card) {
-    const jwt = localStorage.getItem("jwt");
     const addedMovie = savedMovies.find(
       (movie) => movie.movieId === (card.id || card.movieId)
     );
-    console.log(card);
     mainApi
       .deleteMovies(addedMovie._id)
       .then(() => {
@@ -32,9 +29,7 @@ const MoviesCard = ({ card, isSavedPage }) => {
         const updatedList = savedMovies.filter(
           (movie) => movie.movieId !== (card.id || card.movieId)
         );
-        console.log(updatedList);
         setSavedMovies(updatedList);
-        console.log(savedMovies);
         setIsLiked(false);
       })
       .catch((err) => {
@@ -77,11 +72,18 @@ const MoviesCard = ({ card, isSavedPage }) => {
     }
   };
 
+  // Функция для форматирования длительности фильма в часах и минутах
+  const formatDuration = (duration) => {
+    const hours = Math.floor(duration / 60);
+    const minutes = duration % 60;
+    return `${hours} ч ${minutes} мин`;
+  };
+
   return (
     <li key={card.id} className="movies-card">
       <div className="movies-card__block">
         <h3 className="movies-card__title">{card.nameRU}</h3>
-        <p className="movies-card__time">{card.duration} минут</p>
+        <p className="movies-card__time">{formatDuration(card.duration)}</p>
       </div>
       <a
         className="movies-card__trailer"

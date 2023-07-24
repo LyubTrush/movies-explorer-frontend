@@ -27,7 +27,7 @@ export const signin = ( email, password ) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify( email, password ),
+    body: JSON.stringify( {email, password} ),
   }).then(handleRes);
 };
 

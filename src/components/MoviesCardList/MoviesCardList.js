@@ -5,7 +5,6 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 const MoviesCardList = (props) => {
   const [visibleCards, setVisibleCards] = useState(4); // Начальное количество видимых карточек
   //const [filteredMovies, setFilteredMovies] = useState([]); // Отфильтрованные фильмы
-
   const handleShowMore = () => {
     if (window.innerWidth >= 1277) {
       // Если ширина экрана больше или равна 880px, добавляем по 3 карточки

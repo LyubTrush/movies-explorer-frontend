@@ -11,13 +11,13 @@ const Login = (props) => {
   const [password, setpassword] = useState("");
   const [emailErrors, setEmailErrors] = useState("");
   const [passwordErrors, setPasswordErrors] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      const formdata = { email, password };
-      onSubmit(formdata);
+      // const formdata = { email, password };
+      onSubmit(email, password);
     },
     [email, password, onSubmit]
   );
@@ -33,7 +33,7 @@ const Login = (props) => {
       setIsButtonDisabled(true);
     } else {
       setEmailErrors("");
-      setIsButtonDisabled(false);
+      setIsButtonDisabled(emailValue.trim() === "" || password.trim() === "");
     }
   };
 
@@ -47,7 +47,7 @@ const Login = (props) => {
       setIsButtonDisabled(true);
     } else {
       setPasswordErrors("");
-      setIsButtonDisabled(false);
+      setIsButtonDisabled(email.trim() === "" || passwordValue.trim() === "");
     }
   };
 
@@ -99,6 +99,7 @@ const Login = (props) => {
         >
           Войти
         </button>
+        
       </form>
       <div className="register__text-block">
         <p className="register__text">Ещё не зарегистрированы?</p>

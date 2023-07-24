@@ -9,8 +9,7 @@ class MainApi {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
   //редактирование профиля
-  setProfileData(userData) {
-    console.log(userData)
+  setProfileData(email, password) {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
@@ -18,7 +17,7 @@ class MainApi {
         "Content-Type": "application/json",
         authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(userData), 
+      body: JSON.stringify(email, password), 
     } ).then(this._handleRes);
     
   }
@@ -47,7 +46,6 @@ class MainApi {
 
   addMovies(data) {
     const token = localStorage.getItem("jwt");
-    console.log(data)
     return fetch(`${this._baseUrl}/movies`, {
       method: 'POST',
       headers: {

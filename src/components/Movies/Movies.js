@@ -13,42 +13,56 @@ const Movies = (props) => {
   const [searchResult, setSearchResult] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [filmName, setFilmName] = useState('');
+  const [filmName, setFilmName] = useState("");
   const [isShortFilms, setIsShortFilms] = useState(false);
+
+  //const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   //эффект получения всех фильмов
   useEffect(() => {
+    const savedFilms = JSON.parse(localStorage.getItem("allMovies"));
+    if (savedFilms) {
+      setMovies(savedFilms);
+    } else { 
+    setIsLoading(true);
     moviesApi
       .getMovies()
       .then((allMovies) => {
         setMovies(allMovies);
+        localStorage.setItem("allMovies", JSON.stringify(allMovies));
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
-        setError("Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.");
+        setError(
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
+        );
         setIsLoading(false);
       });
+    }
   }, []);
 
   // Функция поиска фильмов по имени
   const searchMovie = (filmName, isShortFilms) => {
     setIsLoading(true);
-    const filteredMoviesByName = movies.filter(movie =>
+    const filteredMoviesByName = movies.filter((movie) =>
       movie.nameRU.toLowerCase().includes(filmName.toLowerCase())
     );
     let filteredMovies;
     // Если чекбокс активен (isShortFilms === true), применяем второй фильтр по короткометражкам
     if (isShortFilms) {
-      filteredMovies = filteredMoviesByName.filter(movie => movie.duration <= 40);
+      filteredMovies = filteredMoviesByName.filter(
+        (movie) => movie.duration <= 40
+      );
     } else {
       filteredMovies = filteredMoviesByName;
     }
     setSearchResult(filteredMovies);
+    setIsLoading(false);
     // Сохраняем результат поиска в localStorage
-    localStorage.setItem('searchResult', JSON.stringify(filteredMovies));
-    localStorage.setItem('filmName', JSON.stringify(filmName));
-    localStorage.setItem('isShortFilms', JSON.stringify(isShortFilms));
-    setIsLoading(false); 
+    localStorage.setItem("searchResult", JSON.stringify(filteredMovies));
+    localStorage.setItem("filmName", JSON.stringify(filmName));
+    localStorage.setItem("isShortFilms", JSON.stringify(isShortFilms));
   };
 
   useEffect(() => {
@@ -56,27 +70,32 @@ const Movies = (props) => {
     if (savedSearchResult) {
       setSearchResult(savedSearchResult);
     }
-    const savedFilmName = JSON.parse(localStorage.getItem('filmName'));
+    const savedFilmName = JSON.parse(localStorage.getItem("filmName"));
     if (savedFilmName) {
       setFilmName(savedFilmName);
     }
 
-    const savedIsShortFilms = JSON.parse(localStorage.getItem('isShortFilms'));
+    const savedIsShortFilms = JSON.parse(localStorage.getItem("isShortFilms"));
     if (savedIsShortFilms) {
       setIsShortFilms(true);
     }
   }, []);
   return (
     <section className="movies">
-      <SearchForm handleSearch={searchMovie} filmName={filmName} defaultValue = {''} isShortFilms={isShortFilms}/>
+      <SearchForm
+        handleSearch={searchMovie}
+        filmName={filmName}
+        defaultValue={""}
+        isShortFilms={isShortFilms}
+      />
       {isLoading ? (
         <Preloader />
       ) : error ? (
         <ErrorMessage message={error} />
-      ) : searchResult.length === 0 ? (
+      ) : searchResult.length === 0 && filmName ? (
         <NotFoundMessage />
       ) : (
-        <MoviesCardList movies={searchResult} isSavedPage={false}  />
+        <MoviesCardList movies={searchResult} isSavedPage={false} />
       )}
     </section>
   );

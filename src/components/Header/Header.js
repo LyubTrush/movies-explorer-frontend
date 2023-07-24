@@ -5,7 +5,7 @@ import NavReister from "../NavRegister/NavRegister";
 import logo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
 
-const Header = () => {
+const Header = (props) => {
   const { pathname } = useLocation();
 
   return (
@@ -13,7 +13,7 @@ const Header = () => {
         <Link to="/" className="header__logo">
           <img src={logo} alt="Логотип"></img>
         </Link>
-      {pathname !== "/" ? <Navigation /> : <NavReister />}
+        {props.loggedIn ? <Navigation /> : <NavReister />}
     </header>
   );
 };
