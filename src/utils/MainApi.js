@@ -60,7 +60,6 @@ class MainApi {
 
   deleteMovies(movieId) {
     const token = localStorage.getItem("jwt");
-    console.log(movieId)
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
       method: 'DELETE',
       headers: {

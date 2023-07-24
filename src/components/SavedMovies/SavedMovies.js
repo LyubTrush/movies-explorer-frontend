@@ -17,12 +17,6 @@ const SavedMovies = (props) => {
     if (!isSearching) {
       setSearchResult(props.savedMovies);
     } else if (searchResult.length > 0) {
-      console.log();
-      console.log(
-        searchResult.filter(
-          (movie) => movie.movieId === props.savedMovies.movieId
-        )
-      );
       setSearchResult(
         searchResult.filter((movie) =>
           props.savedMovies.find(
