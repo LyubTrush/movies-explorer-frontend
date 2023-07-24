@@ -15,6 +15,7 @@ const Movies = (props) => {
   const [error, setError] = useState(null);
   const [filmName, setFilmName] = useState("");
   const [isShortFilms, setIsShortFilms] = useState(false);
+  const [isSearched, setIsSearched] = useState(false);
 
   //const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -23,22 +24,22 @@ const Movies = (props) => {
     const savedFilms = JSON.parse(localStorage.getItem("allMovies"));
     if (savedFilms) {
       setMovies(savedFilms);
-    } else { 
-    setIsLoading(true);
-    moviesApi
-      .getMovies()
-      .then((allMovies) => {
-        setMovies(allMovies);
-        localStorage.setItem("allMovies", JSON.stringify(allMovies));
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setError(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
-        );
-        setIsLoading(false);
-      });
+    } else {
+      setIsLoading(true);
+      moviesApi
+        .getMovies()
+        .then((allMovies) => {
+          setMovies(allMovies);
+          localStorage.setItem("allMovies", JSON.stringify(allMovies));
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError(
+            "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."
+          );
+          setIsLoading(false);
+        });
     }
   }, []);
 
@@ -59,6 +60,7 @@ const Movies = (props) => {
     }
     setSearchResult(filteredMovies);
     setIsLoading(false);
+    setIsSearched(true);
     // Сохраняем результат поиска в localStorage
     localStorage.setItem("searchResult", JSON.stringify(filteredMovies));
     localStorage.setItem("filmName", JSON.stringify(filmName));
@@ -88,13 +90,13 @@ const Movies = (props) => {
         defaultValue={""}
         isShortFilms={isShortFilms}
       />
-      {isLoading ? (
-        <Preloader />
-      ) : error ? (
-        <ErrorMessage message={error} />
-      ) : searchResult.length === 0 && filmName ? (
-        <NotFoundMessage />
-      ) : (
+      {isLoading && <Preloader />}
+      {!isLoading && (
+        // Добавляем дополнительную проверку, чтобы отобразить NotFoundMessage только если был хотя бы один поиск и результат поиска пустой
+        isSearched && searchResult.length === 0 && <NotFoundMessage />
+      )}
+      {/* Если searchResult не пустой, то отображаем MoviesCardList */}
+      {searchResult.length > 0 && (
         <MoviesCardList movies={searchResult} isSavedPage={false} />
       )}
     </section>
